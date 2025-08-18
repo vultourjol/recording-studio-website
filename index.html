@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>СТУДИЯ 16/9 - Профессиональное видеопроизводство</title>
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" sizes="16x16" href="source/vidicon-line-16px-white.png" id="favicon-16">
+		<link rel="icon" type="image/png" sizes="32x32" href="source/vidicon-line-32px-white.png" id="favicon-32">
+
+		<script>
+			function updateFavicon() {
+				const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const favicon16 = document.getElementById('favicon-16');
+				const favicon32 = document.getElementById('favicon-32');
+				
+				if (isDark) {
+					favicon16.href = 'source/vidicon-line-16px-white.png';
+					favicon32.href = 'source/vidicon-line-32px-white.png';
+				} else {
+					favicon16.href = 'source/vidicon-line-16px-black.png';
+					favicon32.href = 'source/vidicon-line-32px-black.png';
+				}
+			}
+	
+			document.addEventListener('DOMContentLoaded', updateFavicon);
+	
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+		</script>
+
 		<script src="https://cdn.tailwindcss.com/3.4.16"></script>
 		<script>tailwind.config={theme:{extend:{colors:{primary:'#ff6b35',secondary:'#1a1a1a'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+
 		<style>
 			:where([class^="ri-"])::before { content: "\f3c2"; }
 			* { font-family: 'Inter', sans-serif; }
@@ -25,11 +52,12 @@
 			.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
 			.aspect-ratio iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 		</style>
-	</head>
 
+	</head>
 
 	<body class="bg-black text-white smooth-scroll">
 		
+		<!-- Header navigation -->
         <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
 			<div class="container mx-auto px-6 py-4">
 				<div class="flex items-center justify-between">
@@ -55,7 +83,7 @@
 			</div>
 		</nav>
 
-
+		<!-- Hero section -->
 		<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 			<div class="absolute inset-0 z-0">
 				<img src="https://readdy.ai/api/search-image?query=Professional%20video%20production%20studio%20with%20cinematic%20lighting%2C%20modern%20equipment%2C%20cameras%2C%20professional%20lighting%20setup%2C%20dark%20moody%20atmosphere%2C%20sleek%20black%20and%20orange%20color%20scheme%2C%20minimalist%20design%2C%20high-end%20video%20production%20environment%2C%20dramatic%20shadows%20and%20highlights%2C%20contemporary%20studio%20space%20with%20professional%20grade%20equipment%2C%20cinematic%20depth%20of%20field&width=1920&height=1080&seq=hero-bg&orientation=landscape"
@@ -86,7 +114,7 @@
 			</div>
 		</section>
 
-
+		<!-- Services section -->
 		<section id="services" class="py-20 bg-gray-900">
 			<div class="container mx-auto px-6">
 
@@ -135,7 +163,7 @@
 			</div>
 		</section>
 
-
+		<!-- Portfolio section -->
 		<section id="portfolio" class="py-20 bg-black">
 			<div class="container mx-auto px-6">
 				<div class="text-center mb-16">
@@ -156,7 +184,7 @@
 
 					<div class="relative group cursor-pointer card-hover">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="https://readdy.ai/api/search-image?query=Professional%20corporate%20video%20production%20behind%20the%20scenes%2C%20business%20executives%20being%20filmed%2C%20modern%20office%20setting%2C%20professional%20lighting%20equipment%2C%20camera%20crew%20working%2C%20sleek%20corporate%20environment%2C%20high-end%20video%20production%20setup%2C%20professional%20cinematography%2C%20business%20meeting%20being%20recorded&width=600&height=400&seq=portfolio-1&orientation=landscape"
+							<img src="source/car.webp"
 								alt="Corporate Video" class="w-full h-full object-cover object-top">
 							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
@@ -172,8 +200,8 @@
 
 					<div class="relative group cursor-pointer card-hover">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="https://readdy.ai/api/search-image?query=Educational%20training%20video%20production%20setup%2C%20instructor%20teaching%20in%20modern%20classroom%2C%20professional%20video%20equipment%2C%20educational%20content%20creation%2C%20training%20session%20being%20filmed%2C%20modern%20learning%20environment%2C%20professional%20educational%20video%20production%2C%20clean%20bright%20studio%20setup&width=600&height=400&seq=portfolio-2&orientation=landscape"
-								alt="Training Video" class="w-full h-full object-cover object-top">
+							<img src="source/car.webp"
+								alt="Corporate Video" class="w-full h-full object-cover object-top">
 							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
 									<i class="ri-play-fill text-2xl text-white"></i>
@@ -188,8 +216,8 @@
 
 					<div class="relative group cursor-pointer card-hover">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="https://readdy.ai/api/search-image?query=Live%20event%20video%20production%2C%20conference%20stage%20with%20professional%20lighting%2C%20multiple%20cameras%20filming%20speakers%2C%20large%20audience%2C%20professional%20event%20coverage%2C%20stage%20lighting%2C%20modern%20conference%20venue%2C%20live%20streaming%20setup%2C%20event%20videography%20equipment&width=600&height=400&seq=portfolio-3&orientation=landscape"
-								alt="Live Event" class="w-full h-full object-cover object-top">
+							<img src="source/car.webp"
+								alt="Corporate Video" class="w-full h-full object-cover object-top">
 							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
 									<i class="ri-play-fill text-2xl text-white"></i>
@@ -204,8 +232,8 @@
 
 					<div class="relative group cursor-pointer card-hover">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="https://readdy.ai/api/search-image?query=Podcast%20video%20recording%20studio%2C%20professional%20podcaster%20with%20microphone%2C%20modern%20podcast%20setup%2C%20video%20podcast%20production%2C%20professional%20audio%20equipment%2C%20contemporary%20studio%20design%2C%20content%20creator%20filming%2C%20YouTube%20video%20production%20setup%2C%20professional%20streaming%20environment&width=600&height=400&seq=portfolio-4&orientation=landscape"
-								alt="Podcast Video" class="w-full h-full object-cover object-top">
+							<img src="source/car.webp"
+								alt="Corporate Video" class="w-full h-full object-cover object-top">
 							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
 									<i class="ri-play-fill text-2xl text-white"></i>
@@ -220,8 +248,8 @@
 
 					<div class="relative group cursor-pointer card-hover">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="https://readdy.ai/api/search-image?query=Product%20demonstration%20video%20production%2C%20professional%20product%20photography%20setup%2C%20modern%20studio%20with%20product%20display%2C%20commercial%20video%20production%2C%20professional%20lighting%20for%20product%20shots%2C%20sleek%20product%20showcase%2C%20professional%20commercial%20filming%20setup&width=600&height=400&seq=portfolio-5&orientation=landscape"
-								alt="Product Demo" class="w-full h-full object-cover object-top">
+							<img src="source/car.webp"
+								alt="Corporate Video" class="w-full h-full object-cover object-top">
 							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
 									<i class="ri-play-fill text-2xl text-white"></i>
@@ -236,8 +264,8 @@
 
 					<div class="relative group cursor-pointer card-hover">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="https://readdy.ai/api/search-image?query=Brand%20storytelling%20video%20production%2C%20creative%20narrative%20filming%2C%20professional%20cinematography%2C%20artistic%20video%20production%2C%20creative%20director%20working%20with%20talent%2C%20modern%20creative%20studio%2C%20professional%20film%20production%2C%20cinematic%20storytelling%20setup%2C%20creative%20video%20content%20production&width=600&height=400&seq=portfolio-6&orientation=landscape"
-								alt="Brand Story" class="w-full h-full object-cover object-top">
+							<img src="source/car.webp"
+								alt="Corporate Video" class="w-full h-full object-cover object-top">
 							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
 									<i class="ri-play-fill text-2xl text-white"></i>
@@ -254,7 +282,7 @@
 			</div>
 		</section>
 
-
+		<!-- About section -->
 		<section id="about" class="py-20 bg-gray-900">
 			<div class="container mx-auto px-6">
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -319,7 +347,7 @@
 			</div>
 		</section>
 
-
+		<!-- Contact section -->
 		<section id="contact" class="py-20 bg-black">
 			<div class="container mx-auto px-6">
 				<div class="text-center mb-16">
@@ -433,7 +461,7 @@
 			</div>
 		</section>
 
-
+		<!-- Footer -->
 		<footer class="bg-gray-900 border-t border-gray-800 py-12">
 			<div class="container mx-auto px-6">
 				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -485,79 +513,7 @@
 			</div>
 		</footer>
 
-
-		<script id="mobile-menu-toggle">
-			document.addEventListener('DOMContentLoaded', function() {
-				const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-				const mobileMenu = document.getElementById('mobile-menu');
-				mobileMenuBtn.addEventListener('click', function() {
-					mobileMenu.classList.toggle('hidden');
-				});
-			});
-		</script>
-		<script id="smooth-scroll-navigation">
-			document.addEventListener('DOMContentLoaded', function() {
-				const navLinks = document.querySelectorAll('nav a[href^="#"]');
-				navLinks.forEach(link => {
-					link.addEventListener('click', function(e) {
-						e.preventDefault();
-						const targetId = this.getAttribute('href');
-						const targetSection = document.querySelector(targetId);
-						if (targetSection) {
-							targetSection.scrollIntoView({
-								behavior: 'smooth',
-								block: 'start'
-							});
-						}
-						const mobileMenu = document.getElementById('mobile-menu');
-						if (!mobileMenu.classList.contains('hidden')) {
-							mobileMenu.classList.add('hidden');
-						}
-					});
-				});
-			});
-		</script>
-		<script id="portfolio-filter">
-			document.addEventListener('DOMContentLoaded', function() {
-				const filterButtons = document.querySelectorAll('#portfolio .flex button');
-				filterButtons.forEach(button => {
-					button.addEventListener('click', function() {
-						filterButtons.forEach(btn => {
-							btn.classList.remove('bg-primary', 'text-white');
-							btn.classList.add('text-gray-400');
-						});
-						this.classList.add('bg-primary', 'text-white');
-						this.classList.remove('text-gray-400');
-					});
-				});
-			});
-		</script>
-		<script id="parallax-effect">
-			document.addEventListener('DOMContentLoaded', function() {
-				window.addEventListener('scroll', function() {
-					const scrolled = window.pageYOffset;
-					const parallaxElements = document.querySelectorAll('.parallax');
-					parallaxElements.forEach(element => {
-						const speed = 0.5;
-						element.style.setProperty('--scroll-y', `${scrolled * speed}px`);
-					});
-				});
-			});
-		</script>
-		<script id="view-work-scroll">
-			document.addEventListener('DOMContentLoaded', function() {
-				const viewWorkBtn = document.getElementById('view-work-btn');
-				viewWorkBtn.addEventListener('click', function() {
-					const portfolioSection = document.getElementById('portfolio');
-					if (portfolioSection) {
-						portfolioSection.scrollIntoView({
-							behavior: 'smooth',
-							block: 'start'
-						});
-					}
-				});
-			});
-		</script>
+		<script src="js/main.js"></script>
 	</body>
 
 
