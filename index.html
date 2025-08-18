@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>СТУДИЯ 16/9 - Профессиональное видеопроизводство</title>
+		<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+		<script>tailwind.config={theme:{extend:{colors:{primary:'#ff6b35',secondary:'#1a1a1a'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+		<style>
+			:where([class^="ri-"])::before { content: "\f3c2"; }
+			* { font-family: 'Inter', sans-serif; }
+			.typing-animation { overflow: hidden; border-right: 2px solid #ff6b35; white-space: nowrap; animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite; }
+			@keyframes typing { from { width: 0; } to { width: 100%; } }
+			@keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #ff6b35; } }
+			.parallax { transform: translateY(var(--scroll-y, 0)); }
+			.smooth-scroll { scroll-behavior: smooth; }
+			.gradient-overlay { background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%); }
+			.card-hover { transition: all 0.3s ease; }
+			.card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+			.video-overlay { background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(26, 26, 26, 0.4)); }
+			.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
+			.aspect-ratio iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+		</style>
+	</head>
+
+
+	<body class="bg-black text-white smooth-scroll">
+		
+        <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+			<div class="container mx-auto px-6 py-4">
+				<div class="flex items-center justify-between">
+					<div class="text-2xl font-bold text-primary">СТУДИЯ 16/9</div>
+					<div class="hidden md:flex space-x-8">
+						<a href="#home" class="text-white hover:text-primary transition-colors duration-300">Главная</a>
+						<a href="#services" class="text-white hover:text-primary transition-colors duration-300">Услуги</a>
+						<a href="#portfolio" class="text-white hover:text-primary transition-colors duration-300">Портфолио</a>
+						<a href="#about" class="text-white hover:text-primary transition-colors duration-300">О нас</a>
+						<a href="#contact" class="text-white hover:text-primary transition-colors duration-300">Контакты</a>
+					</div>
+					<button id="mobile-menu-btn" class="md:hidden w-6 h-6 flex items-center justify-center">
+						<i class="ri-menu-line text-xl"></i>
+					</button>
+				</div>
+				<div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 space-y-4">
+					<a href="#home" class="block text-white hover:text-primary transition-colors duration-300">Главная</a>
+					<a href="#services" class="block text-white hover:text-primary transition-colors duration-300">Услуги</a>
+					<a href="#portfolio" class="block text-white hover:text-primary transition-colors duration-300">Портфолио</a>
+					<a href="#about" class="block text-white hover:text-primary transition-colors duration-300">О нас</a>
+					<a href="#contact" class="block text-white hover:text-primary transition-colors duration-300">Контакты</a>
+				</div>
+			</div>
+		</nav>
+
+
+		<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+			<div class="absolute inset-0 z-0">
+				<img src="https://readdy.ai/api/search-image?query=Professional%20video%20production%20studio%20with%20cinematic%20lighting%2C%20modern%20equipment%2C%20cameras%2C%20professional%20lighting%20setup%2C%20dark%20moody%20atmosphere%2C%20sleek%20black%20and%20orange%20color%20scheme%2C%20minimalist%20design%2C%20high-end%20video%20production%20environment%2C%20dramatic%20shadows%20and%20highlights%2C%20contemporary%20studio%20space%20with%20professional%20grade%20equipment%2C%20cinematic%20depth%20of%20field&width=1920&height=1080&seq=hero-bg&orientation=landscape"
+					alt="Studio Background" class="w-full h-full object-cover object-center">
+				<div class="absolute inset-0 video-overlay"></div>
+			</div>
+			<div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+				<h1 class="text-6xl md:text-8xl font-bold mb-6">
+					<span class="block text-white">СТУДИЯ</span>
+					<span class="block text-primary font-mono">16/9</span>
+				</h1>
+				<p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+					Профессиональное видеопроизводство для современного бизнеса
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<button id="view-work-btn" class="bg-primary text-white px-8 py-4 !rounded-button font-semibold hover:bg-primary/90 transition-all duration-300 whitespace-nowrap">
+						Посмотреть работы
+					</button>
+					<a href="quote.html" data-readdy="true">
+						<button class="border-2 border-white text-white px-8 py-4 !rounded-button font-semibold hover:bg-white hover:text-black transition-all duration-300 whitespace-nowrap">
+							Оставить заявку
+						</button>
+					</a>
+				</div>
+			</div>
+			<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+				<i class="ri-arrow-down-line text-2xl text-white"></i>
+			</div>
+		</section>
+
+
+		<section id="services" class="py-20 bg-gray-900">
+			<div class="container mx-auto px-6">
+
+				<div class="text-center mb-16">
+					<h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Наши Услуги</h2>
+					<p class="text-xl text-gray-400 max-w-4xl mx-auto">Мы специализируемся на создании увлекательного видеоконтента, который приносит результаты для бизнеса, образовательных учреждений и контент-креаторов.</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+					<div class="bg-gray-800 p-8 rounded-xl card-hover">
+						<div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
+							<i class="ri-building-line text-2xl text-primary"></i>
+						</div>
+						<h3 class="text-xl font-bold mb-4 text-white">Корпоративные Видео</h3>
+						<p class="text-gray-400 mb-6">Корпоративные презентации, демонстрации продуктов и рассказы о бренде, которые поднимают ваш бизнес на новый уровень.</p>
+						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
+					</div>
+
+					<div class="bg-gray-800 p-8 rounded-xl card-hover">
+						<div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
+							<i class="ri-graduation-cap-line text-2xl text-primary"></i>
+						</div>
+						<h3 class="text-xl font-bold mb-4 text-white">Обучающий Контент</h3>
+						<p class="text-gray-400 mb-6">Образовательные видео, онлайн-курсы и учебный контент, которые вовлекают и обучают вашу аудиторию.</p>
+						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
+					</div>
+
+					<div class="bg-gray-800 p-8 rounded-xl card-hover">
+						<div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
+							<i class="ri-live-line text-2xl text-primary"></i>
+						</div>
+						<h3 class="text-xl font-bold mb-4 text-white">Прямые Эфиры</h3>
+						<p class="text-gray-400 mb-6">Многоугольное покрытие событий, прямые трансляции и пост-продакшн для конференций и специальных мероприятий.</p>
+						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
+					</div>
+
+					<div class="bg-gray-800 p-8 rounded-xl card-hover">
+						<div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
+							<i class="ri-mic-line text-2xl text-primary"></i>
+						</div>
+						<h3 class="text-xl font-bold mb-4 text-white">Подкасты & Блоги</h3>
+						<p class="text-gray-400 mb-6">Профессиональные видеоподкасты, контент для YouTube и видео для социальных сетей для контент-креаторов.</p>
+						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section id="portfolio" class="py-20 bg-black">
+			<div class="container mx-auto px-6">
+				<div class="text-center mb-16">
+					<h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Наше Портфолио</h2>
+					<p class="text-xl text-gray-400 max-w-3xl mx-auto">Ознакомьтесь с нашими недавними проектами и узнайте, как мы оживляем истории благодаря силе видео.</p>
+				</div>
+
+				<div class="flex justify-center mb-12">
+					<div class="flex bg-gray-800 rounded-full p-1">
+						<button class="px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap">Все проекты</button>
+						<button class="px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Корпоративные</button>
+						<button class="px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Обучающие</button>
+						<button class="px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Мероприятия</button>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+					<div class="relative group cursor-pointer card-hover">
+						<div class="aspect-ratio rounded-xl overflow-hidden">
+							<img src="https://readdy.ai/api/search-image?query=Professional%20corporate%20video%20production%20behind%20the%20scenes%2C%20business%20executives%20being%20filmed%2C%20modern%20office%20setting%2C%20professional%20lighting%20equipment%2C%20camera%20crew%20working%2C%20sleek%20corporate%20environment%2C%20high-end%20video%20production%20setup%2C%20professional%20cinematography%2C%20business%20meeting%20being%20recorded&width=600&height=400&seq=portfolio-1&orientation=landscape"
+								alt="Corporate Video" class="w-full h-full object-cover object-top">
+							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+									<i class="ri-play-fill text-2xl text-white"></i>
+								</div>
+							</div>
+						</div>
+						<div class="mt-4">
+							<h3 class="text-lg font-semibold text-white mb-2">TechCorp Annual Report</h3>
+							<p class="text-gray-400">Corporate Video</p>
+						</div>
+					</div>
+
+					<div class="relative group cursor-pointer card-hover">
+						<div class="aspect-ratio rounded-xl overflow-hidden">
+							<img src="https://readdy.ai/api/search-image?query=Educational%20training%20video%20production%20setup%2C%20instructor%20teaching%20in%20modern%20classroom%2C%20professional%20video%20equipment%2C%20educational%20content%20creation%2C%20training%20session%20being%20filmed%2C%20modern%20learning%20environment%2C%20professional%20educational%20video%20production%2C%20clean%20bright%20studio%20setup&width=600&height=400&seq=portfolio-2&orientation=landscape"
+								alt="Training Video" class="w-full h-full object-cover object-top">
+							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+									<i class="ri-play-fill text-2xl text-white"></i>
+								</div>
+							</div>
+						</div>
+						<div class="mt-4">
+							<h3 class="text-lg font-semibold text-white mb-2">EduTech Course Series</h3>
+							<p class="text-gray-400">Training Content</p>
+						</div>
+					</div>
+
+					<div class="relative group cursor-pointer card-hover">
+						<div class="aspect-ratio rounded-xl overflow-hidden">
+							<img src="https://readdy.ai/api/search-image?query=Live%20event%20video%20production%2C%20conference%20stage%20with%20professional%20lighting%2C%20multiple%20cameras%20filming%20speakers%2C%20large%20audience%2C%20professional%20event%20coverage%2C%20stage%20lighting%2C%20modern%20conference%20venue%2C%20live%20streaming%20setup%2C%20event%20videography%20equipment&width=600&height=400&seq=portfolio-3&orientation=landscape"
+								alt="Live Event" class="w-full h-full object-cover object-top">
+							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+									<i class="ri-play-fill text-2xl text-white"></i>
+								</div>
+							</div>
+						</div>
+						<div class="mt-4">
+							<h3 class="text-lg font-semibold text-white mb-2">Innovation Summit 2024</h3>
+							<p class="text-gray-400">Live Event</p>
+						</div>
+					</div>
+
+					<div class="relative group cursor-pointer card-hover">
+						<div class="aspect-ratio rounded-xl overflow-hidden">
+							<img src="https://readdy.ai/api/search-image?query=Podcast%20video%20recording%20studio%2C%20professional%20podcaster%20with%20microphone%2C%20modern%20podcast%20setup%2C%20video%20podcast%20production%2C%20professional%20audio%20equipment%2C%20contemporary%20studio%20design%2C%20content%20creator%20filming%2C%20YouTube%20video%20production%20setup%2C%20professional%20streaming%20environment&width=600&height=400&seq=portfolio-4&orientation=landscape"
+								alt="Podcast Video" class="w-full h-full object-cover object-top">
+							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+									<i class="ri-play-fill text-2xl text-white"></i>
+								</div>
+							</div>
+						</div>
+						<div class="mt-4">
+							<h3 class="text-lg font-semibold text-white mb-2">The Business Hour Podcast</h3>
+							<p class="text-gray-400">Podcast Video</p>
+						</div>
+					</div>
+
+					<div class="relative group cursor-pointer card-hover">
+						<div class="aspect-ratio rounded-xl overflow-hidden">
+							<img src="https://readdy.ai/api/search-image?query=Product%20demonstration%20video%20production%2C%20professional%20product%20photography%20setup%2C%20modern%20studio%20with%20product%20display%2C%20commercial%20video%20production%2C%20professional%20lighting%20for%20product%20shots%2C%20sleek%20product%20showcase%2C%20professional%20commercial%20filming%20setup&width=600&height=400&seq=portfolio-5&orientation=landscape"
+								alt="Product Demo" class="w-full h-full object-cover object-top">
+							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+									<i class="ri-play-fill text-2xl text-white"></i>
+								</div>
+							</div>
+						</div>
+						<div class="mt-4">
+							<h3 class="text-lg font-semibold text-white mb-2">SmartDevice Launch</h3>
+							<p class="text-gray-400">Product Demo</p>
+						</div>
+					</div>
+
+					<div class="relative group cursor-pointer card-hover">
+						<div class="aspect-ratio rounded-xl overflow-hidden">
+							<img src="https://readdy.ai/api/search-image?query=Brand%20storytelling%20video%20production%2C%20creative%20narrative%20filming%2C%20professional%20cinematography%2C%20artistic%20video%20production%2C%20creative%20director%20working%20with%20talent%2C%20modern%20creative%20studio%2C%20professional%20film%20production%2C%20cinematic%20storytelling%20setup%2C%20creative%20video%20content%20production&width=600&height=400&seq=portfolio-6&orientation=landscape"
+								alt="Brand Story" class="w-full h-full object-cover object-top">
+							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+									<i class="ri-play-fill text-2xl text-white"></i>
+								</div>
+							</div>
+						</div>
+						<div class="mt-4">
+							<h3 class="text-lg font-semibold text-white mb-2">GreenTech Brand Story</h3>
+							<p class="text-gray-400">Brand Video</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+
+		<section id="about" class="py-20 bg-gray-900">
+			<div class="container mx-auto px-6">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+					<div>
+						<h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Современная Студия</h2>
+						<p class="text-xl text-gray-400 mb-8">Наша профессиональная видеопродакшн-студия оснащена новейшими технологиями и укомплектована опытными специалистами, которые понимают искусство визуального повествования.</p>
+						<div class="space-y-6">
+							<div class="flex items-start space-x-4">
+								<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+									<i class="ri-camera-line text-xl text-primary"></i>
+								</div>
+								<div>
+									<h3 class="text-lg font-semibold text-white mb-2">Профессиональное оборудование</h3>
+									<p class="text-gray-400">4K камеры, профессиональное освещение и высококачественное аудиооборудование для превосходного качества производства.</p>
+								</div>
+							</div>
+
+							<div class="flex items-start space-x-4">
+								<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+									<i class="ri-team-line text-xl text-primary"></i>
+								</div>
+								<div>
+									<h3 class="text-lg font-semibold text-white mb-2">Команда экспертов</h3>
+									<p class="text-gray-400">Опытные режиссеры, операторы и монтажеры, которые воплощают ваше видение в жизнь.</p>
+								</div>
+							</div>
+
+							<div class="flex items-start space-x-4">
+								<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+									<i class="ri-time-line text-xl text-primary"></i>
+								</div>
+								<div>
+									<h3 class="text-lg font-semibold text-white mb-2">Быстрый срок выполнения</h3>
+									<p class="text-gray-400">Эффективный рабочий процесс и управление проектами для своевременной доставки вашего контента.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="grid grid-cols-3 gap-8 mt-12">
+							<div class="text-center">
+								<div class="text-3xl font-bold text-primary mb-2">500+</div>
+								<div class="text-gray-400">Завершенных проектов</div>
+							</div>
+
+							<div class="text-center">
+								<div class="text-3xl font-bold text-primary mb-2">8</div>
+								<div class="text-gray-400">Лет опыта</div>
+							</div>
+
+							<div class="text-center">
+								<div class="text-3xl font-bold text-primary mb-2">95%</div>
+								<div class="text-gray-400">Удовлетворенность клиентов</div>
+							</div>
+						</div>
+					</div>
+					<div class="relative">
+						<img src="https://readdy.ai/api/search-image?query=Modern%20professional%20video%20production%20studio%20interior%2C%20high-end%20video%20equipment%2C%20professional%20cameras%20on%20tripods%2C%20studio%20lighting%20setup%2C%20control%20room%20with%20monitors%2C%20sleek%20modern%20design%2C%20professional%20video%20production%20facility%2C%20state-of-the-art%20equipment%2C%20contemporary%20studio%20space%20with%20professional%20grade%20gear&width=800&height=600&seq=studio-interior&orientation=landscape"
+							alt="Studio Interior" class="w-full rounded-xl object-cover object-top">
+						<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section id="contact" class="py-20 bg-black">
+			<div class="container mx-auto px-6">
+				<div class="text-center mb-16">
+					<h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Давайте создадим нечто удивительное</h2>
+					<p class="text-xl text-gray-400 max-w-3xl mx-auto">Готовы воплотить ваше видение в жизнь? Свяжитесь с нашей командой, чтобы обсудить ваш следующий видеопроект.</p>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+					<div>
+						<form class="space-y-6">
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-2">Имя</label>
+									<input type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Иван">
+								</div>
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-2">Фамилия</label>
+									<input type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Иванов">
+								</div>
+							</div>
+							<div>
+								<label class="block text-sm font-medium text-gray-300 mb-2">Почта</label>
+								<input type="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="ivan@company.com">
+							</div>
+							<div>
+								<label class="block text-sm font-medium text-gray-300 mb-2">Тип проекта</label>
+								<div class="relative">
+									<button type="button" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white text-left focus:outline-none focus:border-primary transition-colors duration-300 flex items-center justify-between">
+										<span>Выберите услугу</span>
+										<i class="ri-arrow-down-s-line"></i>
+									</button>
+								</div>
+							</div>
+							<div>
+								<label class="block text-sm font-medium text-gray-300 mb-2">Детали проекта</label>
+								<textarea rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Расскажите нам про свой проект..."></textarea>
+							</div>
+							<button type="submit" class="w-full bg-primary text-white px-8 py-4 !rounded-button font-semibold hover:bg-primary/90 transition-all duration-300 whitespace-nowrap">
+								Отправить сообщение
+							</button>
+						</form>
+					</div>
+					<div class="space-y-8">
+						<div>
+							<h3 class="text-2xl font-bold text-white mb-6">Свяжитесь с нами</h3>
+							<div class="space-y-4">
+								<div class="flex items-center space-x-4">
+									<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+										<i class="ri-phone-line text-xl text-primary"></i>
+									</div>
+									<div>
+										<div class="text-white font-medium">Телефон</div>
+										<div class="text-gray-400">+1 (555) 123-4567</div>
+									</div>
+								</div>
+								<div class="flex items-center space-x-4">
+									<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+										<i class="ri-mail-line text-xl text-primary"></i>
+									</div>
+									<div>
+										<div class="text-white font-medium">Почта</div>
+										<div class="text-gray-400">hello@studio169.com</div>
+									</div>
+								</div>
+								<div class="flex items-center space-x-4">
+									<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+										<i class="ri-map-pin-line text-xl text-primary"></i>
+									</div>
+									<div>
+										<div class="text-white font-medium">Адрес</div>
+										<div class="text-gray-400">123 Creative District, Los Angeles, CA 90028</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold text-white mb-4">Часы работы</h3>
+							<div class="space-y-2 text-gray-400">
+								<div class="flex justify-between">
+									<span>Понедельник - Пятница</span>
+									<span>9:00 - 19:00</span>
+								</div>
+								<div class="flex justify-between">
+									<span>Суббота</span>
+									<span>10:00 - 16:00</span>
+								</div>
+								<div class="flex justify-between">
+									<span>Воскресенье</span>
+									<span>По записи</span>
+								</div>
+							</div>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold text-white mb-4">Следите за нами</h3>
+							<div class="flex space-x-4">
+								<a href="#" class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+									<i class="ri-instagram-line text-xl text-white"></i>
+								</a>
+								<a href="#" class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+									<i class="ri-youtube-line text-xl text-white"></i>
+								</a>
+								<a href="#" class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+									<i class="ri-linkedin-line text-xl text-white"></i>
+								</a>
+								<a href="#" class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+									<i class="ri-twitter-line text-xl text-white"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<footer class="bg-gray-900 border-t border-gray-800 py-12">
+			<div class="container mx-auto px-6">
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+					<div class="col-span-1 md:col-span-2">
+						<div class="text-3xl font-bold text-primary mb-4">СТУДИЯ 16/9</div>
+						<p class="text-gray-400 mb-6 max-w-md">Профессиональная видеостудия, создающая увлекательный контент для бизнеса, образовательных учреждений и создателей контента по всему миру.</p>
+						<div class="flex space-x-4">
+							<a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+								<i class="ri-instagram-line text-white"></i>
+							</a>
+							<a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+								<i class="ri-youtube-line text-white"></i>
+							</a>
+							<a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+								<i class="ri-linkedin-line text-white"></i>
+							</a>
+							<a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+								<i class="ri-twitter-line text-white"></i>
+							</a>
+						</div>
+					</div>
+					<div>
+						<h3 class="text-lg font-semibold text-white mb-4">Услуги</h3>
+						<ul class="space-y-2 text-gray-400">
+							<li><a href="#" class="hover:text-white transition-colors duration-300">Бизнес-видео</a></li>
+							<li><a href="#" class="hover:text-white transition-colors duration-300">Учебный контент</a></li>
+							<li><a href="#" class="hover:text-white transition-colors duration-300">Прямые трансляции</a></li>
+							<li><a href="#" class="hover:text-white transition-colors duration-300">Подкасты и блоги</a></li>
+						</ul>
+					</div>
+					<div>
+						<h3 class="text-lg font-semibold text-white mb-4">Компания</h3>
+						<ul class="space-y-2 text-gray-400">
+							<li><a href="#" class="hover:text-white transition-colors duration-300">О нас</a></li>
+							<li><a href="#" class="hover:text-white transition-colors duration-300">Портфолио</a></li>
+							<li><a href="#" class="hover:text-white transition-colors duration-300">Контакты</a></li>
+							<li><a href="#" class="hover:text-white transition-colors duration-300">Карьера</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+					<p class="text-gray-400 text-sm">© 2025 СТУДИЯ 16/9. Все права защищены.</p>
+					<div class="flex space-x-6 mt-4 md:mt-0">
+						<a href="#" class="text-gray-400 text-sm hover:text-white transition-colors duration-300">Политика конфиденциальности</a>
+						<a href="#" class="text-gray-400 text-sm hover:text-white transition-colors duration-300">Условия обслуживания</a>
+					</div>
+				</div>
+				<p class="text-sm opacity-60">created by <a href="https://github.com/vultourjol" class="hover:text-primary transition-colors">vultourjol</a></p>
+			</div>
+		</footer>
+
+
+		<script id="mobile-menu-toggle">
+			document.addEventListener('DOMContentLoaded', function() {
+				const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+				const mobileMenu = document.getElementById('mobile-menu');
+				mobileMenuBtn.addEventListener('click', function() {
+					mobileMenu.classList.toggle('hidden');
+				});
+			});
+		</script>
+		<script id="smooth-scroll-navigation">
+			document.addEventListener('DOMContentLoaded', function() {
+				const navLinks = document.querySelectorAll('nav a[href^="#"]');
+				navLinks.forEach(link => {
+					link.addEventListener('click', function(e) {
+						e.preventDefault();
+						const targetId = this.getAttribute('href');
+						const targetSection = document.querySelector(targetId);
+						if (targetSection) {
+							targetSection.scrollIntoView({
+								behavior: 'smooth',
+								block: 'start'
+							});
+						}
+						const mobileMenu = document.getElementById('mobile-menu');
+						if (!mobileMenu.classList.contains('hidden')) {
+							mobileMenu.classList.add('hidden');
+						}
+					});
+				});
+			});
+		</script>
+		<script id="portfolio-filter">
+			document.addEventListener('DOMContentLoaded', function() {
+				const filterButtons = document.querySelectorAll('#portfolio .flex button');
+				filterButtons.forEach(button => {
+					button.addEventListener('click', function() {
+						filterButtons.forEach(btn => {
+							btn.classList.remove('bg-primary', 'text-white');
+							btn.classList.add('text-gray-400');
+						});
+						this.classList.add('bg-primary', 'text-white');
+						this.classList.remove('text-gray-400');
+					});
+				});
+			});
+		</script>
+		<script id="parallax-effect">
+			document.addEventListener('DOMContentLoaded', function() {
+				window.addEventListener('scroll', function() {
+					const scrolled = window.pageYOffset;
+					const parallaxElements = document.querySelectorAll('.parallax');
+					parallaxElements.forEach(element => {
+						const speed = 0.5;
+						element.style.setProperty('--scroll-y', `${scrolled * speed}px`);
+					});
+				});
+			});
+		</script>
+		<script id="view-work-scroll">
+			document.addEventListener('DOMContentLoaded', function() {
+				const viewWorkBtn = document.getElementById('view-work-btn');
+				viewWorkBtn.addEventListener('click', function() {
+					const portfolioSection = document.getElementById('portfolio');
+					if (portfolioSection) {
+						portfolioSection.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				});
+			});
+		</script>
+	</body>
+
+
+</html>

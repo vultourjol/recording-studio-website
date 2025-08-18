@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Оставить заявку - СТУДИЯ 16/9</title>
+		<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+		<script>tailwind.config={theme:{extend:{colors:{primary:'#ff6b35',secondary:'#1a1a1a'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+		<style>
+			:where([class^="ri-"])::before { content: "\f3c2"; }
+			* { font-family: 'Inter', sans-serif; }
+			.step-indicator { position: relative; }
+			.step-indicator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #374151; z-index: 1; }
+			.step-indicator .step { position: relative; z-index: 2; }
+			.step.active .step-circle { background: #ff6b35; color: white; }
+			.step.completed .step-circle { background: #10b981; color: white; }
+			.step-circle { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: #374151; color: #9ca3af; display: flex; align-items: center; justify-content: center; font-weight: 600; transition: all 0.3s ease; }
+			.form-section { display: none; }
+			.form-section.active { display: block; }
+			.custom-checkbox { position: relative; display: inline-block; width: 1.25rem; height: 1.25rem; }
+			.custom-checkbox input { opacity: 0; position: absolute; }
+			.custom-checkbox .checkmark { position: absolute; top: 0; left: 0; height: 1.25rem; width: 1.25rem; background: #374151; border: 2px solid #4b5563; border-radius: 4px; transition: all 0.3s ease; }
+			.custom-checkbox input:checked ~ .checkmark { background: #ff6b35; border-color: #ff6b35; }
+			.custom-checkbox .checkmark::after { content: ''; position: absolute; display: none; left: 4px; top: 1px; width: 6px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+			.custom-checkbox input:checked ~ .checkmark::after { display: block; }
+			.custom-radio { position: relative; display: inline-block; width: 1.25rem; height: 1.25rem; }
+			.custom-radio input { opacity: 0; position: absolute; }
+			.custom-radio .radiomark { position: absolute; top: 0; left: 0; height: 1.25rem; width: 1.25rem; background: #374151; border: 2px solid #4b5563; border-radius: 50%; transition: all 0.3s ease; }
+			.custom-radio input:checked ~ .radiomark { background: #ff6b35; border-color: #ff6b35; }
+			.custom-radio .radiomark::after { content: ''; position: absolute; display: none; top: 3px; left: 3px; width: 8px; height: 8px; border-radius: 50%; background: white; }
+			.custom-radio input:checked ~ .radiomark::after { display: block; }
+			.file-upload { position: relative; display: inline-block; cursor: pointer; }
+			.file-upload input[type="file"] { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+			.progress-bar { background: linear-gradient(90deg, #ff6b35 var(--progress, 0%), #374151 var(--progress, 0%)); }
+		</style>
+	</head>
+	<body class="bg-black text-white min-h-screen">
+		<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+			<div class="container mx-auto px-6 py-4">
+				<div class="flex items-center justify-between">
+					<div class="text-2xl font-bold text-primary">СТУДИЯ 16/9</div>
+					<div class="hidden md:flex items-center space-x-8">
+						<a href="index.html" data-readdy="true" class="text-white hover:text-primary transition-colors duration-300">
+							<div class="flex items-center space-x-2">
+								<i class="ri-arrow-left-line"></i>
+								<span>Назад на главную</span>
+							</div>
+						</a>
+						<span class="text-gray-400">|</span>
+						<span class="text-gray-400">Оставить заявку</span>
+					</div>
+					<button id="mobile-menu-btn" class="md:hidden w-6 h-6 flex items-center justify-center">
+						<i class="ri-menu-line text-xl"></i>
+					</button>
+				</div>
+				<div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 space-y-4">
+					<a href="https://readdy.ai/home/e70bbef2-6db6-4e57-89d7-ebb195a0e932/a773db8b-2577-45a5-a4d1-d3b52bb67b61" data-readdy="true" class="block text-white hover:text-primary transition-colors duration-300">
+						<div class="flex items-center space-x-2">
+							<i class="ri-arrow-left-line"></i>
+							<span>Back to Home</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<main class="pt-24 pb-12">
+			<div class="container mx-auto px-6 max-w-4xl">
+				<div class="text-center mb-12">
+					<h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">Оставьте вашу заявку</h1>
+					<p class="text-xl text-gray-400 max-w-2xl mx-auto">Расскажите нам о вашем проекте, и мы предоставим вам подробную смету, адаптированную к вашим конкретным потребностям.</p>
+				</div>
+
+				<div class="step-indicator flex justify-between items-center mb-12">
+					<div class="step active flex flex-col items-center">
+						<div class="step-circle mb-2">1</div>
+						<span class="text-sm text-gray-400">Основы проекта</span>
+					</div>
+					<div class="step flex flex-col items-center">
+						<div class="step-circle mb-2">2</div>
+						<span class="text-sm text-gray-400">Услуги</span>
+					</div>
+					<div class="step flex flex-col items-center">
+						<div class="step-circle mb-2">3</div>
+						<span class="text-sm text-gray-400">Детали</span>
+					</div>
+					<div class="step flex flex-col items-center">
+						<div class="step-circle mb-2">4</div>
+						<span class="text-sm text-gray-400">Контакт</span>
+					</div>
+				</div>
+
+				<div class="bg-gray-900 rounded-xl p-8 mb-8">
+					<div class="progress-bar h-2 rounded-full mb-8" style="--progress: 25%"></div>
+
+					<form id="quote-form">
+						<div id="step-1" class="form-section active">
+							<h2 class="text-2xl font-bold mb-6 text-white">Основы проекта</h2>
+							<div class="space-y-6">
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-3">Какой тип видео вам нужен?</label>
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio">
+												<input type="radio" name="video-type" value="corporate">
+												<span class="radiomark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Корпоративное видео</div>
+												<div class="text-sm text-gray-400">Презентации компаний, истории брендов</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio">
+												<input type="radio" name="video-type" value="training">
+												<span class="radiomark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Обучающий контент</div>
+												<div class="text-sm text-gray-400">Образовательные видео, учебные пособия</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio">
+												<input type="radio" name="video-type" value="event">
+												<span class="radiomark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Прямые трансляции</div>
+												<div class="text-sm text-gray-400">Конференции, семинары, репортажи</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio">
+												<input type="radio" name="video-type" value="podcast">
+												<span class="radiomark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Подкаст и контент</div>
+												<div class="text-sm text-gray-400">Видеоподкасты, контент для YouTube</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio">
+												<input type="radio" name="video-type" value="product">
+												<span class="radiomark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Демо продукта</div>
+												<div class="text-sm text-gray-400">Презентации продуктов, демонстрации</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio">
+												<input type="radio" name="video-type" value="other">
+												<span class="radiomark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Другое</div>
+												<div class="text-sm text-gray-400">Индивидуальные требования проекта</div>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Ожидаемая продолжительность</label>
+										<div class="relative">
+											<button type="button" id="duration-select" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white text-left focus:outline-none focus:border-primary transition-colors duration-300 flex items-center justify-between">
+												<span id="duration-text">Выберите продолжительность</span>
+												<i class="ri-arrow-down-s-line"></i>
+											</button>
+											<div id="duration-dropdown" class="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-10 hidden">
+												<div class="py-2">
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="0-2">0-2 минут</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="2-5">2-5 минут</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="5-10">5-10 минут</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="10-30">10-30 минут</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="30+">30+ минут</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Ожидаемая дата завершения</label>
+										<input type="date" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300">
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-3">Бюджет</label>
+									<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+										<label class="flex items-center justify-center p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio mr-3">
+												<input type="radio" name="budget" value="5000-15000">
+												<span class="radiomark"></span>
+											</div>
+											<div class="text-center">
+												<div class="font-medium text-white">$5,000 - $15,000</div>
+												<div class="text-sm text-gray-400">Базовый продакшн</div>
+											</div>
+										</label>
+										<label class="flex items-center justify-center p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio mr-3">
+												<input type="radio" name="budget" value="15000-35000">
+												<span class="radiomark"></span>
+											</div>
+											<div class="text-center">
+												<div class="font-medium text-white">$15,000 - $35,000</div>
+												<div class="text-sm text-gray-400">Профессиональный продакшн</div>
+											</div>
+										</label>
+										<label class="flex items-center justify-center p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio mr-3">
+												<input type="radio" name="budget" value="35000+">
+												<span class="radiomark"></span>
+											</div>
+											<div class="text-center">
+												<div class="font-medium text-white">$35,000+</div>
+												<div class="text-sm text-gray-400">Премиум продакшн</div>
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="step-2" class="form-section">
+							<h2 class="text-2xl font-bold mb-6 text-white">Требования к услугам</h2>
+							<div class="space-y-6">
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-3">Какие услуги вам нужны? (Выберите все подходящие)</label>
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="services" value="pre-production">
+												<span class="checkmark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Пре-продакшн</div>
+												<div class="text-sm text-gray-400">Написание сценария, создание раскадровки</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="services" value="filming">
+												<span class="checkmark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Съемка</div>
+												<div class="text-sm text-gray-400">Видеопроизводство, кинематография</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="services" value="post-production">
+												<span class="checkmark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Пост-продакшн</div>
+												<div class="text-sm text-gray-400">Монтаж, цветокоррекция, эффекты</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="services" value="audio">
+												<span class="checkmark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Аудио продакшн</div>
+												<div class="text-sm text-gray-400">Запись, сведение, мастеринг</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="services" value="animation">
+												<span class="checkmark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Анимация и графика</div>
+												<div class="text-sm text-gray-400">Моушн графика, анимация</div>
+											</div>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="services" value="talent">
+												<span class="checkmark"></span>
+											</div>
+											<div>
+												<div class="font-medium text-white">Таланты и команда</div>
+												<div class="text-sm text-gray-400">Актеры, ведущие, команда</div>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-3">Место съемки</label>
+									<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+										<label class="flex items-center justify-center p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio mr-3">
+												<input type="radio" name="location" value="studio">
+												<span class="radiomark"></span>
+											</div>
+											<div class="text-center">
+												<div class="font-medium text-white">Наша студия</div>
+												<div class="text-sm text-gray-400">Профессиональная студия</div>
+											</div>
+										</label>
+										<label class="flex items-center justify-center p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio mr-3">
+												<input type="radio" name="location" value="client">
+												<span class="radiomark"></span>
+											</div>
+											<div class="text-center">
+												<div class="font-medium text-white">Ваша локация</div>
+												<div class="text-sm text-gray-400">Съемка на месте</div>
+											</div>
+										</label>
+										<label class="flex items-center justify-center p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-radio mr-3">
+												<input type="radio" name="location" value="both">
+												<span class="radiomark"></span>
+											</div>
+											<div class="text-center">
+												<div class="font-medium text-white">Общие локации</div>
+												<div class="text-sm text-gray-400">Несколько локаций</div>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-3">Требуемое оборудование</label>
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="equipment" value="4k-cameras">
+												<span class="checkmark"></span>
+											</div>
+											<span class="font-medium text-white">4K Камеры</span>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="equipment" value="drone">
+												<span class="checkmark"></span>
+											</div>
+											<span class="font-medium text-white">Съемка с дрона</span>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="equipment" value="lighting">
+												<span class="checkmark"></span>
+											</div>
+											<span class="font-medium text-white">Профессиональное освещение</span>
+										</label>
+										<label class="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors duration-300">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="equipment" value="audio-gear">
+												<span class="checkmark"></span>
+											</div>
+											<span class="font-medium text-white">Аудио оборудование</span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="step-3" class="form-section">
+							<h2 class="text-2xl font-bold mb-6 text-white">Детали проекта</h2>
+							<div class="space-y-6">
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-2">Описание проекта</label>
+									<textarea rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Опишите ваш проект в деталях. Каков главный посыл? Какой стиль вы ищете?"></textarea>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-2">Цели и задачи проекта</label>
+									<textarea rows="3" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Чего вы хотите добиться этим видео? Кто ваша целевая аудитория?"></textarea>
+								</div>
+
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Целевая аудитория</label>
+										<input type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Например, бизнес-профи, студенты">
+									</div>
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Предпочтительный стиль видео</label>
+										<div class="relative">
+											<button type="button" id="style-select" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white text-left focus:outline-none focus:border-primary transition-colors duration-300 flex items-center justify-between">
+												<span id="style-text">Выберите стиль</span>
+												<i class="ri-arrow-down-s-line"></i>
+											</button>
+											<div id="style-dropdown" class="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-10 hidden">
+												<div class="py-2">
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="professional">Профессионально и корпоративно</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="creative">Креативно и художественно</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="documentary">Документальный стиль</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="modern">Современно и модно</button>
+													<button type="button" class="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-300" data-value="minimalist">Минималистично</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-2">Справочные материалы</label>
+									<div class="file-upload w-full p-6 bg-gray-800 border-2 border-dashed border-gray-600 rounded-lg hover:border-primary transition-colors duration-300">
+										<input type="file" multiple accept="image/*,video/*,.pdf,.doc,.docx">
+										<div class="text-center">
+											<i class="ri-upload-cloud-line text-3xl text-gray-400 mb-2"></i>
+											<p class="text-gray-300 mb-1">Перетащите файлы сюда или нажмите, чтобы загрузить</p>
+											<p class="text-sm text-gray-500">Изображения, видео, документы (макс. 10 МБ каждый)</p>
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-2">Специальные требования</label>
+									<textarea rows="3" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Любые конкретные требования, сроки или ограничения, о которых нам следует знать"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div id="step-4" class="form-section">
+							<h2 class="text-2xl font-bold mb-6 text-white">Контактная информация</h2>
+							<div class="space-y-6">
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Название компании</label>
+										<input type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Ваша компания">
+									</div>
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Контактное лицо</label>
+										<input type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Полное имя" required>
+									</div>
+								</div>
+
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Адрес почты</label>
+										<input type="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="your@email.com" required>
+									</div>
+									<div>
+										<label class="block text-sm font-medium text-gray-300 mb-2">Номер телефона</label>
+										<input type="tel" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="+1 (555) 123-4567">
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-3">Предпочтительный метод связи</label>
+									<div class="flex flex-wrap gap-4">
+										<label class="flex items-center space-x-3">
+											<div class="custom-radio">
+												<input type="radio" name="contact-method" value="email">
+												<span class="radiomark"></span>
+											</div>
+											<span class="text-white">Почта</span>
+										</label>
+										<label class="flex items-center space-x-3">
+											<div class="custom-radio">
+												<input type="radio" name="contact-method" value="phone">
+												<span class="radiomark"></span>
+											</div>
+											<span class="text-white">Телефон</span>
+										</label>
+										<label class="flex items-center space-x-3">
+											<div class="custom-radio">
+												<input type="radio" name="contact-method" value="both">
+												<span class="radiomark"></span>
+											</div>
+											<span class="text-white">Оба</span>
+										</label>
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-3">Лучшее время для связи</label>
+									<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+										<label class="flex items-center space-x-3">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="contact-time" value="morning">
+												<span class="checkmark"></span>
+											</div>
+											<span class="text-white">Утро (9:00 - 12:00)</span>
+										</label>
+										<label class="flex items-center space-x-3">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="contact-time" value="afternoon">
+												<span class="checkmark"></span>
+											</div>
+											<span class="text-white">День (12:00 - 17:00)</span>
+										</label>
+										<label class="flex items-center space-x-3">
+											<div class="custom-checkbox">
+												<input type="checkbox" name="contact-time" value="evening">
+												<span class="checkmark"></span>
+											</div>
+											<span class="text-white">Вечер (17:00 - 20:00)</span>
+										</label>
+									</div>
+								</div>
+
+								<div>
+									<label class="block text-sm font-medium text-gray-300 mb-2">Дополнительные заметки</label>
+									<textarea rows="3" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary transition-colors duration-300" placeholder="Что-то еще, что вы хотели бы нам сообщить?"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex justify-between mt-8">
+							<button type="button" id="prev-btn" class="px-6 py-3 bg-gray-700 text-white !rounded-button font-semibold hover:bg-gray-600 transition-all duration-300 whitespace-nowrap hidden">
+								<i class="ri-arrow-left-line mr-2"></i>Назад
+							</button>
+							<div class="flex space-x-4 ml-auto">
+								<button type="button" id="next-btn" class="px-6 py-3 bg-primary text-white !rounded-button font-semibold hover:bg-primary/90 transition-all duration-300 whitespace-nowrap">
+									Далее<i class="ri-arrow-right-line ml-2"></i>
+								</button>
+								<button type="submit" id="submit-btn" class="px-8 py-3 bg-green-600 text-white !rounded-button font-semibold hover:bg-green-700 transition-all duration-300 whitespace-nowrap hidden">
+									Отправить заявку
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>				<div class="mt-12 bg-gray-900 rounded-xl p-8">
+					<h3 class="text-xl font-bold text-white mb-4">Что будет дальше?</h3>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+						<div class="flex items-start space-x-4">
+							<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+								<span class="text-white font-bold text-sm">1</span>
+							</div>
+							<div>
+								<h4 class="font-semibold text-white mb-1">Обзор и Анализ</h4>
+								<p class="text-gray-400 text-sm">Мы рассмотрим ваши требования и проанализируем потребности вашего проекта в течение 24 часов.</p>
+							</div>
+						</div>
+						<div class="flex items-start space-x-4">
+							<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+								<span class="text-white font-bold text-sm">2</span>
+							</div>
+							<div>
+								<h4 class="font-semibold text-white mb-1">Предложение</h4>
+								<p class="text-gray-400 text-sm">Вы получите подробное предложение с графиком, результатами и разбивкой цен.</p>
+							</div>
+						</div>
+						<div class="flex items-start space-x-4">
+							<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+								<span class="text-white font-bold text-sm">3</span>
+							</div>
+							<div>
+								<h4 class="font-semibold text-white mb-1">Запуск проекта</h4>
+								<p class="text-gray-400 text-sm">Запланируйте консультационный звонок, чтобы обсудить детали и начать ваш проект.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-8 text-center">
+					<p class="text-gray-400 text-sm">Вопросы? Свяжитесь с нами по адресу <a href="mailto:hello@studio169.com" class="text-primary hover:text-primary/80">hello@studio169.com</a> или <a href="tel:+15551234567" class="text-primary hover:text-primary/80">+1 (555) 123-4567</a></p>
+				</div>
+			</div>
+</main>		<script id="mobile-menu-toggle">
+			document.addEventListener('DOMContentLoaded', function() {
+				const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+				const mobileMenu = document.getElementById('mobile-menu');
+				mobileMenuBtn.addEventListener('click', function() {
+					mobileMenu.classList.toggle('hidden');
+				});
+			});
+		</script>
+
+		<script id="dropdown-functionality">
+			document.addEventListener('DOMContentLoaded', function() {
+				function setupDropdown(selectId, dropdownId, textId) {
+					const select = document.getElementById(selectId);
+					const dropdown = document.getElementById(dropdownId);
+					const text = document.getElementById(textId);
+					const options = dropdown.querySelectorAll('button[data-value]');
+
+					select.addEventListener('click', function() {
+						dropdown.classList.toggle('hidden');
+					});
+
+					options.forEach(option => {
+						option.addEventListener('click', function() {
+							text.textContent = this.textContent;
+							dropdown.classList.add('hidden');
+						});
+					});
+
+					document.addEventListener('click', function(e) {
+						if (!select.contains(e.target) && !dropdown.contains(e.target)) {
+							dropdown.classList.add('hidden');
+						}
+					});
+				}
+
+				setupDropdown('duration-select', 'duration-dropdown', 'duration-text');
+				setupDropdown('style-select', 'style-dropdown', 'style-text');
+			});
+		</script>
+
+		<script id="multi-step-form">
+			document.addEventListener('DOMContentLoaded', function() {
+				let currentStep = 1;
+				const totalSteps = 4;
+				const form = document.getElementById('quote-form');
+				const nextBtn = document.getElementById('next-btn');
+				const prevBtn = document.getElementById('prev-btn');
+				const submitBtn = document.getElementById('submit-btn');
+				const progressBar = document.querySelector('.progress-bar');
+
+				function updateStep() {
+					document.querySelectorAll('.form-section').forEach(section => {
+						section.classList.remove('active');
+					});
+					document.getElementById(`step-${currentStep}`).classList.add('active');
+
+					document.querySelectorAll('.step').forEach((step, index) => {
+						step.classList.remove('active', 'completed');
+						if (index + 1 === currentStep) {
+							step.classList.add('active');
+						} else if (index + 1 < currentStep) {
+							step.classList.add('completed');
+						}
+					});
+
+					const progress = (currentStep / totalSteps) * 100;
+					progressBar.style.setProperty('--progress', `${progress}%`);
+
+					prevBtn.classList.toggle('hidden', currentStep === 1);
+					nextBtn.classList.toggle('hidden', currentStep === totalSteps);
+					submitBtn.classList.toggle('hidden', currentStep !== totalSteps);
+				}
+
+				nextBtn.addEventListener('click', function() {
+					if (currentStep < totalSteps) {
+						currentStep++;
+						updateStep();
+					}
+				});
+
+				prevBtn.addEventListener('click', function() {
+					if (currentStep > 1) {
+						currentStep--;
+						updateStep();
+					}
+				});
+
+				form.addEventListener('submit', function(e) {
+					e.preventDefault();
+					alert('Thank you for your quote request! We will contact you within 24 hours with a detailed proposal.');
+				});
+			});
+		</script>
+
+		<script id="file-upload-handler">
+			document.addEventListener('DOMContentLoaded', function() {
+				const fileUpload = document.querySelector('.file-upload input[type="file"]');
+				const uploadArea = document.querySelector('.file-upload');
+
+				fileUpload.addEventListener('change', function() {
+					const files = this.files;
+					if (files.length > 0) {
+						const fileNames = Array.from(files).map(file => file.name).join(', ');
+						uploadArea.querySelector('p').textContent = `Selected: ${fileNames}`;
+					}
+				});
+
+				uploadArea.addEventListener('dragover', function(e) {
+					e.preventDefault();
+					this.classList.add('border-primary');
+				});
+
+				uploadArea.addEventListener('dragleave', function(e) {
+					e.preventDefault();
+					this.classList.remove('border-primary');
+				});
+
+				uploadArea.addEventListener('drop', function(e) {
+					e.preventDefault();
+					this.classList.remove('border-primary');
+					const files = e.dataTransfer.files;
+					fileUpload.files = files;
+					if (files.length > 0) {
+						const fileNames = Array.from(files).map(file => file.name).join(', ');
+						this.querySelector('p').textContent = `Selected: ${fileNames}`;
+					}
+				});
+			});
+		</script>
+
+	</body>
+</html>
