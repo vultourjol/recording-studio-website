@@ -34,52 +34,36 @@
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-
-		<style>
-			:where([class^="ri-"])::before { content: "\f3c2"; }
-			* { font-family: 'Inter', sans-serif; }
-			.typing-animation { overflow: hidden; border-right: 2px solid #ff6b35; white-space: nowrap; animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite; }
-			@keyframes typing { from { width: 0; } to { width: 100%; } }
-			@keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #ff6b35; } }
-			.parallax { transform: translateY(var(--scroll-y, 0)); }
-			.smooth-scroll { scroll-behavior: smooth; }
-			.gradient-overlay { background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%); }
-			.card-hover { transition: all 0.3s ease; }
-			.card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
-			.video-overlay { background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(26, 26, 26, 0.4)); }
-			.aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
-			.aspect-ratio iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-			.aspect-ratio img {position: absolute; top: 0; left: 0; }
-		</style>
+		<link rel="stylesheet" href="css/styles.css">
 
 	</head>
 
-	<body class="bg-black text-white smooth-scroll">
+	<body class="bg-gray-900 text-white smooth-scroll">
 		
 		<!-- Header navigation -->
-        <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <nav class="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-gray-800">
 			<div class="container mx-auto px-6 py-4">
 				<div class="flex items-center justify-between">
-					<div class="text-2xl font-bold text-primary">СТУДИЯ 16/9</div>
+					<div class="text-2xl font-bold text-primary"><a href="#home"><i class="ri-vidicon-line"></i> 16/9</a></div>
 					<div class="hidden md:flex space-x-8">
-						<a href="#home" class="text-white hover:text-primary transition-colors duration-300">Главная</a>
-						<a href="#services" class="text-white hover:text-primary transition-colors duration-300">Услуги</a>
-						<a href="#portfolio" class="text-white hover:text-primary transition-colors duration-300">Портфолио</a>
-						<a href="#about" class="text-white hover:text-primary transition-colors duration-300">О нас</a>
-						<a href="#contact" class="text-white hover:text-primary transition-colors duration-300">Контакты</a>
+						<a href="#home" class="text-white hover:text-primary transition-colors duration-300">главная</a>
+						<a href="#services" class="text-white hover:text-primary transition-colors duration-300">услуги</a>
+						<a href="#portfolio" class="text-white hover:text-primary transition-colors duration-300">портфолио</a>
+						<a href="#about" class="text-white hover:text-primary transition-colors duration-300">о нас</a>
+						<a href="#contact" class="text-white hover:text-primary transition-colors duration-300">контакты</a>
 					</div>
 					<button id="mobile-menu-btn" class="md:hidden w-6 h-6 flex items-center justify-center">
 						<i class="ri-menu-line text-xl"></i>
 					</button>
 				</div>
 				<div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 space-y-4">
-					<a href="#home" class="block text-white hover:text-primary transition-colors duration-300">Главная</a>
-					<a href="#services" class="block text-white hover:text-primary transition-colors duration-300">Услуги</a>
-					<a href="#portfolio" class="block text-white hover:text-primary transition-colors duration-300">Портфолио</a>
-					<a href="#about" class="block text-white hover:text-primary transition-colors duration-300">О нас</a>
-					<a href="#contact" class="block text-white hover:text-primary transition-colors duration-300">Контакты</a>
+					<a href="#home" class="block text-white hover:text-primary transition-colors duration-300">главная</a>
+					<a href="#services" class="block text-white hover:text-primary transition-colors duration-300">услуги</a>
+					<a href="#portfolio" class="block text-white hover:text-primary transition-colors duration-300">портфолио</a>
+					<a href="#about" class="block text-white hover:text-primary transition-colors duration-300">о нас</a>
+					<a href="#contact" class="block text-white hover:text-primary transition-colors duration-300">контакты</a>
 				</div>
 			</div>
 		</nav>
@@ -91,12 +75,12 @@
 					alt="Studio Background" class="w-full h-full object-cover object-center">
 				<div class="absolute inset-0 video-overlay"></div>
 			</div>
-			<div class="relative z-10 text-center max-w-4xl mx-auto px-6">
-				<h1 class="text-6xl md:text-8xl font-bold mb-6">
-					<span class="block text-white">СТУДИЯ</span>
-					<span class="block text-primary font-mono">16/9</span>
+			<div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+				<h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight mb-6">
+					<span class="text-white">СТУДИЯ</span>
+					<span class="text-primary font-mono">16/9</span>
 				</h1>
-				<p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+				<p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
 					Профессиональное видеопроизводство для современного бизнеса
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -109,9 +93,6 @@
 						</button>
 					</a>
 				</div>
-			</div>
-			<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-				<i class="ri-arrow-down-line text-2xl text-white"></i>
 			</div>
 		</section>
 
@@ -131,7 +112,6 @@
 						</div>
 						<h3 class="text-xl font-bold mb-4 text-white">Корпоративные Видео</h3>
 						<p class="text-gray-400 mb-6">Корпоративные презентации, демонстрации продуктов и рассказы о бренде, которые поднимают ваш бизнес на новый уровень.</p>
-						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
 					</div>
 
 					<div class="bg-gray-800 p-8 rounded-xl card-hover">
@@ -140,7 +120,6 @@
 						</div>
 						<h3 class="text-xl font-bold mb-4 text-white">Обучающий Контент</h3>
 						<p class="text-gray-400 mb-6">Образовательные видео, онлайн-курсы и учебный контент, которые вовлекают и обучают вашу аудиторию.</p>
-						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
 					</div>
 
 					<div class="bg-gray-800 p-8 rounded-xl card-hover">
@@ -149,7 +128,6 @@
 						</div>
 						<h3 class="text-xl font-bold mb-4 text-white">Прямые Эфиры</h3>
 						<p class="text-gray-400 mb-6">Многоугольное покрытие событий, прямые трансляции и пост-продакшн для конференций и специальных мероприятий.</p>
-						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
 					</div>
 
 					<div class="bg-gray-800 p-8 rounded-xl card-hover">
@@ -158,14 +136,13 @@
 						</div>
 						<h3 class="text-xl font-bold mb-4 text-white">Подкасты & Блоги</h3>
 						<p class="text-gray-400 mb-6">Профессиональные видеоподкасты, контент для YouTube и видео для социальных сетей для контент-креаторов.</p>
-						<button class="text-primary font-semibold hover:text-primary/80 transition-colors duration-300 whitespace-nowrap">Узнать больше →</button>
 					</div>
 				</div>
 			</div>
 		</section>
 
 		<!-- Portfolio section -->
-		<section id="portfolio" class="py-20 bg-black">
+		<section id="portfolio" class="py-20 bg-gray-900">
 			<div class="container mx-auto px-6">
 				<div class="text-center mb-16">
 					<h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Наше Портфолио</h2>
@@ -173,17 +150,17 @@
 				</div>
 
 				<div class="flex justify-center mb-12">
-					<div class="flex bg-gray-800 rounded-full p-1">
-						<button class="px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap">Все проекты</button>
-						<button class="px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Корпоративные</button>
-						<button class="px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Обучающие</button>
-						<button class="px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Мероприятия</button>
+					<div class="flex flex-wrap justify-center gap-2 bg-gray-800 rounded-2xl p-2 max-w-full">
+						<button class="px-4 sm:px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap">Все проекты</button>
+						<button class="px-4 sm:px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Корпоративные</button>
+						<button class="px-4 sm:px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Обучающие</button>
+						<button class="px-4 sm:px-6 py-2 rounded-full text-gray-400 hover:text-white transition-colors duration-300 whitespace-nowrap">Мероприятия</button>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-					<div class="relative group cursor-pointer card-hover">
+					<div class="relative group cursor-pointer">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
 							<img src="source/car.webp"
 								alt="Corporate Video" class="w-full h-full object-cover object-top">
@@ -199,7 +176,7 @@
 						</div>
 					</div>
 
-					<div class="relative group cursor-pointer card-hover">
+					<div class="relative group cursor-pointer">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
 							<img src="source/car.webp"
 								alt="Corporate Video" class="w-full h-full object-cover object-top">
@@ -215,7 +192,7 @@
 						</div>
 					</div>
 
-					<div class="relative group cursor-pointer card-hover">
+					<div class="relative group cursor-pointer">
 						<div class="aspect-ratio rounded-xl overflow-hidden">
 							<img src="source/car.webp"
 								alt="Corporate Video" class="w-full h-full object-cover object-top">
@@ -228,54 +205,6 @@
 						<div class="mt-4">
 							<h3 class="text-lg font-semibold text-white mb-2">Innovation Summit 2024</h3>
 							<p class="text-gray-400">Live Event</p>
-						</div>
-					</div>
-
-					<div class="relative group cursor-pointer card-hover">
-						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="source/car.webp"
-								alt="Corporate Video" class="w-full h-full object-cover object-top">
-							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-									<i class="ri-play-fill text-2xl text-white"></i>
-								</div>
-							</div>
-						</div>
-						<div class="mt-4">
-							<h3 class="text-lg font-semibold text-white mb-2">The Business Hour Podcast</h3>
-							<p class="text-gray-400">Podcast Video</p>
-						</div>
-					</div>
-
-					<div class="relative group cursor-pointer card-hover">
-						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="source/car.webp"
-								alt="Corporate Video" class="w-full h-full object-cover object-top">
-							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-									<i class="ri-play-fill text-2xl text-white"></i>
-								</div>
-							</div>
-						</div>
-						<div class="mt-4">
-							<h3 class="text-lg font-semibold text-white mb-2">SmartDevice Launch</h3>
-							<p class="text-gray-400">Product Demo</p>
-						</div>
-					</div>
-
-					<div class="relative group cursor-pointer card-hover">
-						<div class="aspect-ratio rounded-xl overflow-hidden">
-							<img src="source/car.webp"
-								alt="Corporate Video" class="w-full h-full object-cover object-top">
-							<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-								<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-									<i class="ri-play-fill text-2xl text-white"></i>
-								</div>
-							</div>
-						</div>
-						<div class="mt-4">
-							<h3 class="text-lg font-semibold text-white mb-2">GreenTech Brand Story</h3>
-							<p class="text-gray-400">Brand Video</p>
 						</div>
 					</div>
 
@@ -322,7 +251,7 @@
 							</div>
 						</div>
 
-						<div class="grid grid-cols-3 gap-8 mt-12">
+						<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12">
 							<div class="text-center">
 								<div class="text-3xl font-bold text-primary mb-2">500+</div>
 								<div class="text-gray-400">Завершенных проектов</div>
@@ -349,12 +278,8 @@
 		</section>
 
 		<!-- Contact section -->
-		<section id="contact" class="py-20 bg-black">
+		<section id="contact" class="py-20 bg-gray-900">
 			<div class="container mx-auto px-6">
-				<div class="text-center mb-16">
-					<h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Давайте создадим нечто удивительное</h2>
-					<p class="text-xl text-gray-400 max-w-3xl mx-auto">Готовы воплотить ваше видение в жизнь? Свяжитесь с нашей командой, чтобы обсудить ваш следующий видеопроект.</p>
-				</div>
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
 					<div>
 						<form class="space-y-6">
@@ -504,13 +429,13 @@
 					</div>
 				</div>
 				<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-					<p class="text-gray-400 text-sm">© 2025 СТУДИЯ 16/9. Все права защищены.</p>
+					<p class="text-gray-400 text-sm">© 2026 СТУДИЯ 16/9. Все права защищены.</p>
 					<div class="flex space-x-6 mt-4 md:mt-0">
 						<a href="#" class="text-gray-400 text-sm hover:text-white transition-colors duration-300">Политика конфиденциальности</a>
-						<a href="#" class="text-gray-400 text-sm hover:text-white transition-colors duration-300">Условия обслуживания</a>
+						<a href="https://policies.google.com/terms?hl=ru" class="text-gray-400 text-sm hover:text-white transition-colors duration-300">Условия обслуживания</a>
+						<a href="https://vultourjol.ru/" class="text-gray-400 text-sm hover:text-white transition-colors duration-300">created by vultourjol <i class="ri-code-box-fill"></i></a>
 					</div>
 				</div>
-				<p class="text-sm opacity-60">created by <a href="https://github.com/vultourjol" class="hover:text-primary transition-colors">vultourjol</a></p>
 			</div>
 		</footer>
 

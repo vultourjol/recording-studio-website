@@ -8,46 +8,20 @@
 		<script>tailwind.config={theme:{extend:{colors:{primary:'#ff6b35',secondary:'#1a1a1a'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-		<style>
-			:where([class^="ri-"])::before { content: "\f3c2"; }
-			* { font-family: 'Inter', sans-serif; }
-			.step-indicator { position: relative; }
-			.step-indicator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #374151; z-index: 1; }
-			.step-indicator .step { position: relative; z-index: 2; }
-			.step.active .step-circle { background: #ff6b35; color: white; }
-			.step.completed .step-circle { background: #10b981; color: white; }
-			.step-circle { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: #374151; color: #9ca3af; display: flex; align-items: center; justify-content: center; font-weight: 600; transition: all 0.3s ease; }
-			.form-section { display: none; }
-			.form-section.active { display: block; }
-			.custom-checkbox { position: relative; display: inline-block; width: 1.25rem; height: 1.25rem; }
-			.custom-checkbox input { opacity: 0; position: absolute; }
-			.custom-checkbox .checkmark { position: absolute; top: 0; left: 0; height: 1.25rem; width: 1.25rem; background: #374151; border: 2px solid #4b5563; border-radius: 4px; transition: all 0.3s ease; }
-			.custom-checkbox input:checked ~ .checkmark { background: #ff6b35; border-color: #ff6b35; }
-			.custom-checkbox .checkmark::after { content: ''; position: absolute; display: none; left: 4px; top: 1px; width: 6px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
-			.custom-checkbox input:checked ~ .checkmark::after { display: block; }
-			.custom-radio { position: relative; display: inline-block; width: 1.25rem; height: 1.25rem; }
-			.custom-radio input { opacity: 0; position: absolute; }
-			.custom-radio .radiomark { position: absolute; top: 0; left: 0; height: 1.25rem; width: 1.25rem; background: #374151; border: 2px solid #4b5563; border-radius: 50%; transition: all 0.3s ease; }
-			.custom-radio input:checked ~ .radiomark { background: #ff6b35; border-color: #ff6b35; }
-			.custom-radio .radiomark::after { content: ''; position: absolute; display: none; top: 3px; left: 3px; width: 8px; height: 8px; border-radius: 50%; background: white; }
-			.custom-radio input:checked ~ .radiomark::after { display: block; }
-			.file-upload { position: relative; display: inline-block; cursor: pointer; }
-			.file-upload input[type="file"] { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
-			.progress-bar { background: linear-gradient(90deg, #ff6b35 var(--progress, 0%), #374151 var(--progress, 0%)); }
-		</style>
+		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body class="bg-black text-white min-h-screen">
+
 		<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
 			<div class="container mx-auto px-6 py-4">
 				<div class="flex items-center justify-between">
-					<div class="text-2xl font-bold text-primary">СТУДИЯ 16/9</div>
+					<div class="text-2xl font-bold text-primary"><a href="#home"><i class="ri-vidicon-line"></i> 16/9</a></div>
 					<div class="hidden md:flex items-center space-x-8">
 						<a href="index.html" data-readdy="true" class="text-white hover:text-primary transition-colors duration-300">
 							<div class="flex items-center space-x-2">
-								<i class="ri-arrow-left-line"></i>
-								<span>Назад на главную</span>
+								<span><i class="ri-arrow-left-line"></i> на главную</span>
 							</div>
 						</a>
 						<span class="text-gray-400">|</span>
@@ -57,11 +31,10 @@
 						<i class="ri-menu-line text-xl"></i>
 					</button>
 				</div>
-				<div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 space-y-4">
-					<a href="https://readdy.ai/home/e70bbef2-6db6-4e57-89d7-ebb195a0e932/a773db8b-2577-45a5-a4d1-d3b52bb67b61" data-readdy="true" class="block text-white hover:text-primary transition-colors duration-300">
+				<div id="mobile-menu" class="md:hidden hidden mt-6">
+					<a href="#home" data-readdy="true" class="block text-white hover:text-primary transition-colors duration-300">
 						<div class="flex items-center space-x-2">
-							<i class="ri-arrow-left-line"></i>
-							<span>Back to Home</span>
+							<span><i class="ri-arrow-left-line"></i> на главную</span>
 						</div>
 					</a>
 				</div>
@@ -69,32 +42,32 @@
 		</nav>
 
 		<main class="pt-24 pb-12">
-			<div class="container mx-auto px-6 max-w-4xl">
+			<div class="container mx-auto px-4 sm:px-6 max-w-4xl">
 				<div class="text-center mb-12">
 					<h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">Оставьте вашу заявку</h1>
 					<p class="text-xl text-gray-400 max-w-2xl mx-auto">Расскажите нам о вашем проекте, и мы предоставим вам подробную смету, адаптированную к вашим конкретным потребностям.</p>
 				</div>
 
-				<div class="step-indicator flex justify-between items-center mb-12">
-					<div class="step active flex flex-col items-center">
+				<div class="step-indicator mb-12">
+					<div class="step active flex flex-col items-center text-center">
 						<div class="step-circle mb-2">1</div>
 						<span class="text-sm text-gray-400">Основы проекта</span>
 					</div>
-					<div class="step flex flex-col items-center">
+					<div class="step flex flex-col items-center text-center">
 						<div class="step-circle mb-2">2</div>
 						<span class="text-sm text-gray-400">Услуги</span>
 					</div>
-					<div class="step flex flex-col items-center">
+					<div class="step flex flex-col items-center text-center">
 						<div class="step-circle mb-2">3</div>
 						<span class="text-sm text-gray-400">Детали</span>
 					</div>
-					<div class="step flex flex-col items-center">
+					<div class="step flex flex-col items-center text-center">
 						<div class="step-circle mb-2">4</div>
 						<span class="text-sm text-gray-400">Контакт</span>
 					</div>
 				</div>
 
-				<div class="bg-gray-900 rounded-xl p-8 mb-8">
+				<div class="bg-gray-900 rounded-xl p-5 sm:p-8 mb-8">
 					<div class="progress-bar h-2 rounded-full mb-8" style="--progress: 25%"></div>
 
 					<form id="quote-form">
@@ -522,7 +495,7 @@
 								<button type="button" id="next-btn" class="px-6 py-3 bg-primary text-white !rounded-button font-semibold hover:bg-primary/90 transition-all duration-300 whitespace-nowrap">
 									Далее<i class="ri-arrow-right-line ml-2"></i>
 								</button>
-								<button type="submit" id="submit-btn" class="px-8 py-3 bg-green-600 text-white !rounded-button font-semibold hover:bg-green-700 transition-all duration-300 whitespace-nowrap hidden">
+								<button type="submit" id="submit-btn" class="px-4 py-3 bg-green-600 text-white !rounded-button font-semibold hover:bg-green-700 transition-all duration-300 whitespace-nowrap hidden">
 									Отправить заявку
 								</button>
 							</div>
